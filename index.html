@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade Your Scholars Program — Cynthia Trotta</title>
+<meta name="description" content="A 3-minute audit for university scholars program directors. Find the gaps between what your program has and what consistently lands students at companies that don't recruit on campus.">
+<meta property="og:title" content="Grade Your Scholars Program">
+<meta property="og:description" content="A 3-minute scorecard for university scholars program directors.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1F4E78;
+    --navy-dark: #163B5A;
+    --teal: #2E8B91;
+    --teal-light: #E3F1F2;
+    --coral: #E87060;
+    --bg: #FAFBFC;
+    --surface: #FFFFFF;
+    --border: #E5E7EB;
+    --border-strong: #CBD5E1;
+    --text: #1F2937;
+    --text-muted: #6B7280;
+    --text-light: #9CA3AF;
+    --success: #059669;
+    --warning: #D97706;
+    --danger: #DC2626;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero */
+  .hero {
+    background: var(--navy);
+    color: white;
+    padding: 60px 0 48px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .hero .subhead {
+    font-size: 17px;
+    color: rgba(255,255,255,0.85);
+    max-width: 560px;
+    margin: 0 auto 20px;
+    line-height: 1.5;
+  }
+  .hero .proof {
+    font-size: 13px;
+    color: var(--teal);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .hero .proof a { color: var(--teal); text-decoration: none; }
+  .hero .proof a:hover { text-decoration: underline; }
+
+  /* Main */
+  main { padding: 48px 0 80px; }
+
+  /* Question cards */
+  .question {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.15s;
+  }
+  .question.answered { border-color: var(--teal); }
+  .q-meta {
+    font-size: 11px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .q-text {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 18px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .q-opts { display: flex; flex-direction: column; gap: 8px; }
+  .q-opt {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.12s;
+    background: white;
+  }
+  .q-opt:hover {
+    border-color: var(--border-strong);
+    background: var(--bg);
+  }
+  .q-opt.selected {
+    background: var(--teal-light);
+    border-color: var(--teal);
+    color: var(--navy-dark);
+    font-weight: 500;
+  }
+  .q-opt input { display: none; }
+  .q-opt .dot {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--border-strong);
+    margin-top: 2px;
+    transition: all 0.12s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .q-opt.selected .dot { border-color: var(--teal); }
+  .q-opt.selected .dot::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+  }
+
+  /* Progress + submit */
+  .submit-wrap {
+    position: sticky;
+    bottom: 0;
+    background: linear-gradient(to top, var(--bg) 70%, transparent);
+    padding: 24px 0;
+    margin-top: 8px;
+  }
+  .progress {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .progress strong { color: var(--navy); font-weight: 600; }
+  .btn-primary {
+    width: 100%;
+    padding: 16px 32px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: var(--navy);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-primary:hover:not(:disabled) { background: var(--navy-dark); }
+  .btn-primary:disabled { background: var(--border-strong); cursor: not-allowed; }
+  .btn-cta {
+    width: 100%;
+    padding: 16px 32px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: var(--coral);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+  }
+  .btn-cta:hover { opacity: 0.92; }
+
+  /* Results */
+  .results {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    margin-top: 32px;
+  }
+  .results.hidden { display: none; }
+  .score-display {
+    text-align: center;
+    padding: 20px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .score-num {
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .score-max {
+    font-size: 24px;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-left: 4px;
+  }
+  .score-band {
+    font-size: 17px;
+    font-weight: 500;
+    margin-top: 12px;
+  }
+
+  /* Email gate */
+  .email-gate {
+    background: var(--teal-light);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .email-gate h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy-dark);
+    margin-bottom: 8px;
+  }
+  .email-gate p {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .form-grid { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+  .form-grid .full { grid-column: 1 / -1; }
+  @media (max-width: 520px) { .form-grid { grid-template-columns: 1fr; } }
+  .form-grid input, .form-grid textarea {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 11px 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    background: white;
+    width: 100%;
+    color: var(--text);
+  }
+  .form-grid input:focus, .form-grid textarea:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(46, 139, 145, 0.15);
+  }
+  .form-grid textarea { min-height: 70px; resize: vertical; font-family: inherit; }
+
+  /* Detailed results */
+  .detailed.hidden { display: none; }
+  .gap-list { margin: 20px 0 28px; }
+  .gap-card {
+    border-left: 4px solid var(--teal);
+    background: var(--bg);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 12px;
+  }
+  .gap-rank {
+    font-size: 11px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  .gap-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 4px 0 8px;
+  }
+  .gap-fix {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.55;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 40px 0 60px;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  footer a { color: var(--navy); text-decoration: none; font-weight: 500; }
+  footer a:hover { text-decoration: underline; }
+
+  /* Small responsive */
+  @media (max-width: 600px) {
+    .hero { padding: 48px 0 40px; }
+    .hero h1 { font-size: 28px; }
+    .hero .subhead { font-size: 15px; }
+    .question { padding: 20px; }
+    .results { padding: 28px 20px; }
+    .score-num { font-size: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <h1>Grade your scholars program</h1>
+    <p class="subhead">A 3-minute audit for faculty and program directors. Find the gaps between what your program has and what consistently lands students at companies that don't recruit on campus.</p>
+    <p class="proof">Built from the KU Supply Chain Cohort methodology with <a href="https://www.linkedin.com/in/cynthiatrotta/">Jeff Zoroya</a></p>
+  </div>
+</section>
+
+<main>
+  <div class="container">
+
+    <form id="quiz-form" autocomplete="off">
+      <div id="questions"></div>
+
+      <div class="submit-wrap">
+        <p class="progress" id="progress"><strong>0</strong> of 10 answered</p>
+        <button type="submit" class="btn-primary" id="submit-btn" disabled>Answer all 10 to see your results</button>
+      </div>
+    </form>
+
+    <section class="results hidden" id="results">
+      <div class="score-display">
+        <span class="score-num" id="score-num" style="color: var(--navy);">0</span><span class="score-max">/ 40</span>
+        <p class="score-band" id="score-band"></p>
+      </div>
+
+      <div class="email-gate" id="email-gate">
+        <h3>See your top 3 gaps and what to do about each</h3>
+        <p>Drop your info and I'll send your detailed report — plus a one-page overview of how the methodology works. No follow-up sequence, no spam.</p>
+        <form id="email-form">
+          <div class="form-grid">
+            <input type="text" name="first_name" placeholder="First name" required>
+            <input type="text" name="last_name" placeholder="Last name" required>
+            <input type="text" name="university" placeholder="University" required class="full">
+            <input type="text" name="role" placeholder="Your role (e.g., Director of XYZ Scholars Program)" required class="full">
+            <input type="email" name="email" placeholder="Work email" required class="full">
+            <textarea name="up_at_night" placeholder="Optional: what about your scholars program keeps you up at night?" class="full"></textarea>
+            <input type="hidden" name="score" id="hidden-score">
+            <input type="hidden" name="band" id="hidden-band">
+            <input type="hidden" name="answers" id="hidden-answers">
+          </div>
+          <div style="margin-top: 16px;">
+            <button type="submit" class="btn-primary" id="email-submit">Get my detailed report</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="detailed hidden" id="detailed">
+        <h2 style="font-size: 22px; font-weight: 600; color: var(--navy); margin-bottom: 8px;">Your top 3 gaps</h2>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 4px;">Where your program scored lowest, and what each module covers.</p>
+
+        <div class="gap-list" id="gap-list"></div>
+
+        <a href="https://calendly.com/cynthia-cynthiatrotta/15min" target="_blank" class="btn-cta" id="cta-btn">Schedule a 15-minute call with Cynthia</a>
+        <p style="text-align: center; margin-top: 16px; font-size: 13px; color: var(--text-muted);">No prep needed — bring your gaps, we'll walk through fit.</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <p>Cynthia Trotta · <a href="https://cynthiatrotta.com">cynthiatrotta.com</a> · <a href="https://www.linkedin.com/in/cynthiatrotta/">LinkedIn</a></p>
+</footer>
+
+<script>
+const questions = [
+  { meta: 'Q1 of 10 · Foundation', text: 'Does your university have foundational career services courses (resume building, mock interviews, career fair prep)?', opts: ['No structured offering', 'Optional workshops only', 'Required for some majors', 'Required across the business school'], module: 'Foundation' },
+  { meta: 'Q2 of 10 · Foundation', text: 'Is there a Professor of the Practice or industry-hire faculty member embedded in your program?', opts: ['No', 'Adjunct involvement only', 'One Professor of the Practice', 'Multiple practitioners on faculty'], module: 'Foundation' },
+  { meta: 'Q3 of 10 · Foundation', text: 'What is your scholars cohort size?', opts: ['Open enrollment, large', 'Application but loose criteria', 'Selective, 15 to 30 students', 'Highly selective, 5 to 15 students'], module: 'Foundation' },
+  { meta: 'Q4 of 10 · Module 1 — Positioning', text: 'Do your scholars do dedicated work identifying their highest and best use — the intersection of strengths, market demand, and role fit?', opts: ['Not addressed', 'Brief advising conversation', 'Workshop or assignment', 'Multi-session module with revision'], module: 'Positioning' },
+  { meta: 'Q5 of 10 · Module 2 — LinkedIn intelligence', text: 'Do your scholars use LinkedIn as a research engine (company hiring patterns, hiring manager identification, connector mapping), or primarily as an online resume?', opts: ['As an online resume only', 'Profile setup taught, no research', 'Some research and targeting work', 'LinkedIn as primary research tool'], module: 'LinkedIn Intelligence' },
+  { meta: 'Q6 of 10 · Module 3 — Strategic outreach', text: 'In a typical cohort, what percentage of your scholars have directly messaged a hiring manager at a target company before applying?', opts: ['Under 10 percent', '10 to 30 percent', '30 to 60 percent', 'Over 60 percent'], module: 'Strategic Outreach' },
+  { meta: 'Q7 of 10 · Module 4 — Interview mastery', text: 'Beyond general interview prep, do your scholars get coaching tailored to their specific industry — behavioral, technical, and case-based?', opts: ['General prep only', 'Some industry-specific tips', 'Industry-specific mock interviews', 'Industry behavioral plus technical plus case'], module: 'Interview Mastery' },
+  { meta: 'Q8 of 10 · Module 5 — Offer navigation', text: 'Do your scholars get explicit coaching on evaluating, comparing, and negotiating offers?', opts: ['Not addressed', 'Briefly mentioned', 'Optional workshop', 'Embedded module with practice'], module: 'Offer Navigation' },
+  { meta: 'Q9 of 10 · Outcomes', text: 'What share of your scholars place at companies outside your immediate region (companies that do not recruit on campus)?', opts: ['Mostly local placements', 'About 25 percent out-of-region', 'About 50 percent out-of-region', '75 percent or more out-of-region'], module: 'Out-of-Region Placement' },
+  { meta: 'Q10 of 10 · Foundation', text: 'How do you track first-destination outcomes (where scholars land within 6 months of graduation)?', opts: ['Not tracked', 'Aggregate only', 'By program or major', 'By individual scholar with details'], module: 'Outcomes Tracking' },
+];
+
+const moduleFixes = {
+  'Positioning': 'Module 1 — scholars define their highest and best use and a positioning statement that guides every subsequent decision (resume, LinkedIn, outreach, interviews).',
+  'LinkedIn Intelligence': 'Module 2 — scholars learn LinkedIn as a research engine: company hiring patterns, hiring manager identification, connector mapping. The 90 percent of LinkedIn most students never use.',
+  'Strategic Outreach': 'Module 3 — scholars run a 15-company target campaign with messages that earn replies from hiring managers. Outreach without positioning wastes a scholar\'s best asset: their first impression.',
+  'Interview Mastery': 'Module 4 — industry-specific behavioral, technical, and case prep, plus post-interview follow-up strategy.',
+  'Offer Navigation': 'Module 5 — scholars learn to compare offers, negotiate compensation, and plan their first 90 days in the role.',
+  'Out-of-Region Placement': 'Modules 2 and 3 combined. The gap here is usually outreach-driven — scholars haven\'t built the target list or connector map for firms beyond your campus radius.',
+  'Foundation': 'This sits outside the Ignite Your Career methodology and is worth coordinating on with your campus career services team. Worth raising in the discovery call so we map the full picture.',
+  'Outcomes Tracking': 'Tracking infrastructure is a career services partnership conversation, not a coaching one — but it affects how you measure the impact of any new program you adopt.',
+};
+
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xvzyjwlq';
+
+const root = document.getElementById('questions');
+const submitBtn = document.getElementById('submit-btn');
+const progressEl = document.getElementById('progress');
+const resultsEl = document.getElementById('results');
+const scoreNumEl = document.getElementById('score-num');
+const scoreBandEl = document.getElementById('score-band');
+const emailGateEl = document.getElementById('email-gate');
+const detailedEl = document.getElementById('detailed');
+const gapListEl = document.getElementById('gap-list');
+const quizForm = document.getElementById('quiz-form');
+const emailForm = document.getElementById('email-form');
+const answers = {};
+
+questions.forEach((q, i) => {
+  const card = document.createElement('div');
+  card.className = 'question';
+  card.id = `question-${i}`;
+  card.innerHTML = `<div class="q-meta">${q.meta}</div><div class="q-text">${q.text}</div><div class="q-opts" data-q="${i}"></div>`;
+  const optsEl = card.querySelector('.q-opts');
+  q.opts.forEach((opt, j) => {
+    const score = j + 1;
+    const label = document.createElement('label');
+    label.className = 'q-opt';
+    label.innerHTML = `<input type="radio" name="q${i}" value="${score}"><span class="dot"></span><span>${opt}</span>`;
+    label.addEventListener('click', (e) => {
+      e.preventDefault();
+      optsEl.querySelectorAll('.q-opt').forEach(el => el.classList.remove('selected'));
+      label.classList.add('selected');
+      card.classList.add('answered');
+      answers[i] = { score, module: q.module, optionText: opt };
+      updateProgress();
+    });
+    optsEl.appendChild(label);
+  });
+  root.appendChild(card);
+});
+
+function updateProgress() {
+  const count = Object.keys(answers).length;
+  progressEl.innerHTML = `<strong>${count}</strong> of 10 answered`;
+  if (count === questions.length) {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Show my results';
+  } else {
+    submitBtn.disabled = true;
+    submitBtn.textContent = `Answer ${questions.length - count} more to see your results`;
+  }
+}
+
+quizForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (Object.keys(answers).length < questions.length) return;
+
+  const scores = Object.values(answers).map(a => a.score);
+  const total = scores.reduce((a, b) => a + b, 0);
+  let band, bandColor;
+  if (total >= 36) { band = 'Best-in-class — your program is in the top tier of cohort design.'; bandColor = 'var(--success)'; }
+  else if (total >= 28) { band = 'Solid foundation with specific gaps worth closing.'; bandColor = 'var(--navy)'; }
+  else if (total >= 18) { band = 'Significant gaps. Your students are working harder than they need to.'; bandColor = 'var(--warning)'; }
+  else { band = 'Early stage. Most of the structure is still ahead of you.'; bandColor = 'var(--danger)'; }
+
+  scoreNumEl.textContent = total;
+  scoreNumEl.style.color = bandColor;
+  scoreBandEl.textContent = band;
+  scoreBandEl.style.color = bandColor;
+
+  document.getElementById('hidden-score').value = total;
+  document.getElementById('hidden-band').value = band;
+  document.getElementById('hidden-answers').value = JSON.stringify(
+    Object.entries(answers).reduce((obj, [i, a]) => {
+      obj[`Q${parseInt(i)+1}`] = `${a.score}/4 — ${a.optionText}`;
+      return obj;
+    }, {})
+  );
+
+  resultsEl.classList.remove('hidden');
+  resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+emailForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('email-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const formData = new FormData(emailForm);
+
+  try {
+    if (FORMSPREE_ENDPOINT && FORMSPREE_ENDPOINT !== 'FORMSPREE_ENDPOINT_HERE') {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (!response.ok) throw new Error('Submission failed');
+    }
+    showDetailedResults();
+  } catch (error) {
+    btn.textContent = 'Try again';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again or email cynthia@cynthiatrotta.com directly.');
+  }
+});
+
+function showDetailedResults() {
+  const sorted = Object.entries(answers)
+    .map(([i, a]) => ({ i: parseInt(i), ...a, question: questions[parseInt(i)] }))
+    .sort((a, b) => a.score - b.score);
+  const top3 = sorted.slice(0, 3);
+
+  gapListEl.innerHTML = top3.map((g, rank) => {
+    const fix = moduleFixes[g.module] || '';
+    return `<div class="gap-card">
+      <div class="gap-rank">Gap ${rank + 1} · Scored ${g.score} of 4</div>
+      <div class="gap-title">${g.question.module}</div>
+      <div class="gap-fix">${fix}</div>
+    </div>`;
+  }).join('');
+
+  emailGateEl.style.display = 'none';
+  detailedEl.classList.remove('hidden');
+  detailedEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>
