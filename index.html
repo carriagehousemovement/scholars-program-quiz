@@ -3,656 +3,1212 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grade Your Scholars Program! — Cynthia Trotta</title>
-<meta name="description" content="A 3-minute audit for faculty and program directors. Find the gaps between what your program has and what consistently lands scholars at companies that don't recruit on campus.">
-<meta property="og:title" content="Grade Your Scholars Program!">
-<meta property="og:description" content="A 3-minute scorecard for university scholars program directors.">
-<meta property="og:type" content="website">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="shortcut icon" href="favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>ADU Carriage House Cost Calculator | The Carriage House Movement</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap');
   :root {
-    --navy: #1F4E78;
-    --navy-dark: #163B5A;
-    --teal: #2E8B91;
-    --teal-light: #E3F1F2;
-    --coral: #E87060;
-    --bg: #FAFBFC;
-    --surface: #FFFFFF;
-    --border: #E5E7EB;
-    --border-strong: #CBD5E1;
-    --text: #1F2937;
-    --text-muted: #6B7280;
-    --text-light: #9CA3AF;
-    --success: #059669;
-    --warning: #D97706;
-    --danger: #DC2626;
+    --navy: #1e3a5f;
+    --teal: #5dada6;
+    --charcoal: #4a4a4a;
+    --light-gray: #fafafa;
+    --coral: #e87060;
+    --white: #ffffff;
+    --coral-hover: #d45a4a;
+    --teal-hover: #4a9a93;
+    --teal-light: rgba(93, 173, 166, 0.1);
+    --coral-light: rgba(232, 112, 96, 0.08);
+    --navy-light: rgba(30, 58, 95, 0.06);
+    --border: #e2e8f0;
+    --text-light: #64748b;
+    --shadow: 0 4px 24px rgba(30, 58, 95, 0.08);
+    --shadow-lg: 0 8px 40px rgba(30, 58, 95, 0.12);
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    color: var(--charcoal);
+    background: var(--light-gray);
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+    padding-top: 70px;
   }
-  .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-
-  /* Hero */
-  .hero {
-    background: var(--navy);
-    color: white;
-    padding: 60px 0 48px;
-    text-align: center;
+  /* Site nav */
+  .site-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97);
+    border-bottom: 1px solid #e8e8e8;
+    padding: 0 20px; min-height: 70px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
   }
-  .hero .logo {
-    display: block;
-    max-width: 140px;
-    height: auto;
-    margin: 0 auto 24px;
+  .site-nav .brand {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700; font-size: 18px; color: var(--navy); padding: 12px 0;
+    text-decoration: none; display: block;
   }
-  .hero h1 {
-    font-size: 36px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    letter-spacing: -0.02em;
+  .site-nav .brand span {
+    color: var(--teal); font-size: 11px; font-family: 'Inter', sans-serif;
+    letter-spacing: 3px; display: block; font-weight: 500;
   }
-  .hero .subhead {
-    font-size: 17px;
-    color: rgba(255,255,255,0.88);
-    max-width: 560px;
+  .site-nav .nav-links {
+    display: flex; gap: 20px; align-items: center; flex-wrap: wrap; padding: 8px 0;
+  }
+  .site-nav .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--charcoal); text-decoration: none;
+  }
+  .site-nav .nav-links a:hover { color: var(--navy); }
+  .site-nav .nav-cta {
+    background: var(--coral); color: #fff !important; padding: 10px 22px;
+    border-radius: 6px; font-weight: 600; font-size: 13px;
+    text-decoration: none; display: inline-block; white-space: nowrap;
+  }
+  .site-nav .nav-cta:hover { background: var(--coral-hover); }
+  /* Site footer */
+  .site-footer {
+    background: #0f1f33; padding: 60px 20px 32px;
+    color: rgba(255,255,255,0.6); margin-top: 40px;
+  }
+  .site-footer .footer-grid {
+    display: flex; flex-wrap: wrap; gap: 40px; max-width: 1100px; margin: 0 auto;
+  }
+  .site-footer .footer-brand { min-width: 250px; flex: 2; }
+  .site-footer .footer-col { min-width: 140px; flex: 1; }
+  .site-footer h4 {
+    font-size: 12px; letter-spacing: 2px; color: var(--teal);
+    margin-bottom: 16px; text-transform: uppercase; font-weight: 600;
+  }
+  .site-footer a {
+    display: block; font-size: 14px; margin-bottom: 10px;
+    color: rgba(255,255,255,0.6); text-decoration: none;
+  }
+  .site-footer a:hover { color: rgba(255,255,255,0.9); }
+  .site-footer .social-links {
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+  .site-footer .social-link {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; color: rgba(255,255,255,0.6); text-decoration: none;
+    margin-bottom: 0;
+  }
+  .site-footer .social-link:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+  .site-footer .footer-bottom {
+    max-width: 1100px; margin: 40px auto 0; padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 12px;
+  }
+  .site-footer .footer-bottom a {
+    display: inline; color: rgba(255,255,255,0.4); margin-left: 16px;
+  }
+  @media (max-width: 640px) {
+    .site-nav .nav-links a:not(.nav-cta) { font-size: 13px; }
+  }
+  .calculator-container {
+    max-width: 720px;
     margin: 0 auto;
-    line-height: 1.5;
+    padding: 20px;
   }
-
-  /* Main */
-  main { padding: 48px 0 80px; }
-
-  /* Question cards */
-  .question {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 16px;
-    transition: border-color 0.15s;
+  .calc-header {
+    text-align: center;
+    padding: 36px 20px 28px;
   }
-  .question.answered { border-color: var(--teal); }
-  .q-meta {
-    font-size: 11px;
-    color: var(--text-light);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 600;
+  .calc-header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    color: var(--navy);
     margin-bottom: 8px;
+    line-height: 1.3;
   }
-  .q-text {
-    font-size: 17px;
-    font-weight: 500;
-    margin-bottom: 18px;
-    line-height: 1.5;
-    color: var(--text);
-  }
-  .q-opts { display: flex; flex-direction: column; gap: 8px; }
-  .q-opt {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px 16px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    cursor: pointer;
+  .calc-header p {
     font-size: 15px;
-    transition: all 0.12s;
-    background: white;
-  }
-  .q-opt:hover {
-    border-color: var(--border-strong);
-    background: var(--bg);
-  }
-  .q-opt.selected {
-    background: var(--teal-light);
-    border-color: var(--teal);
-    color: var(--navy-dark);
-    font-weight: 500;
-  }
-  .q-opt.dontknow {
-    font-style: italic;
-    color: var(--text-muted);
-  }
-  .q-opt.dontknow.selected {
-    color: var(--navy-dark);
-    font-style: normal;
-  }
-  .q-opt input { display: none; }
-  .q-opt .dot {
-    flex: none;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    border: 2px solid var(--border-strong);
-    margin-top: 2px;
-    transition: all 0.12s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .q-opt.selected .dot { border-color: var(--teal); }
-  .q-opt.selected .dot::after {
-    content: '';
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--teal);
-  }
-
-  /* Progress + submit */
-  .submit-wrap {
-    position: sticky;
-    bottom: 0;
-    background: linear-gradient(to top, var(--bg) 70%, transparent);
-    padding: 24px 0;
-    margin-top: 8px;
-  }
-  .progress {
-    font-size: 13px;
-    color: var(--text-muted);
-    text-align: center;
-    margin-bottom: 12px;
-  }
-  .progress strong { color: var(--navy); font-weight: 600; }
-  .btn-primary {
-    width: 100%;
-    padding: 16px 32px;
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: 600;
-    color: white;
-    background: var(--navy);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .btn-primary:hover:not(:disabled) { background: var(--navy-dark); }
-  .btn-primary:disabled { background: var(--border-strong); cursor: not-allowed; }
-  .btn-cta {
-    width: 100%;
-    padding: 16px 32px;
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: 600;
-    color: white;
-    background: var(--coral);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.15s;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-  }
-  .btn-cta:hover { opacity: 0.92; }
-
-  /* Results */
-  .results {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 40px;
-    margin-top: 32px;
-  }
-  .results.hidden { display: none; }
-  .score-display {
-    text-align: center;
-    padding: 20px 0 24px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 24px;
-  }
-  .score-num {
-    font-size: 72px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.04em;
-  }
-  .score-max {
-    font-size: 24px;
     color: var(--text-light);
-    font-weight: 500;
-    margin-left: 4px;
+    max-width: 480px;
+    margin: 0 auto;
   }
-  .score-band {
-    font-size: 17px;
-    font-weight: 500;
+  .calc-header .powered-by {
+    font-size: 12px;
+    color: var(--teal);
     margin-top: 12px;
-  }
-  .score-note {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-top: 10px;
-    font-style: italic;
-  }
-
-  /* Email gate */
-  .email-gate {
-    background: var(--teal-light);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 24px;
-  }
-  .email-gate h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--navy-dark);
-    margin-bottom: 8px;
-  }
-  .email-gate p {
-    font-size: 14px;
-    color: var(--text);
-    margin-bottom: 16px;
-    line-height: 1.5;
-  }
-  .form-grid { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
-  .form-grid .full { grid-column: 1 / -1; }
-  @media (max-width: 520px) { .form-grid { grid-template-columns: 1fr; } }
-  .form-grid input, .form-grid textarea {
-    font-family: inherit;
-    font-size: 14px;
-    padding: 11px 14px;
-    border: 1px solid var(--border-strong);
-    border-radius: 8px;
-    background: white;
-    width: 100%;
-    color: var(--text);
-  }
-  .form-grid input:focus, .form-grid textarea:focus {
-    outline: none;
-    border-color: var(--teal);
-    box-shadow: 0 0 0 3px rgba(46, 139, 145, 0.15);
-  }
-  .form-grid textarea { min-height: 70px; resize: vertical; font-family: inherit; }
-
-  /* Detailed results */
-  .detailed.hidden { display: none; }
-  .gap-list { margin: 20px 0 28px; }
-  .gap-card {
-    border-left: 4px solid var(--teal);
-    background: var(--bg);
-    padding: 16px 20px;
-    border-radius: 0 8px 8px 0;
-    margin-bottom: 12px;
-  }
-  .gap-rank {
-    font-size: 11px;
-    color: var(--text-light);
+    font-weight: 500;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 600;
   }
-  .gap-title {
-    font-size: 17px;
+  .calc-header .powered-by a {
+    color: var(--teal);
+    text-decoration: none;
+  }
+  .calc-header .powered-by a:hover {
+    text-decoration: underline;
+  }
+  .calc-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .calc-card h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px;
+    color: var(--navy);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--teal-light);
+  }
+  .calc-card h2 .step-num {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background: var(--teal);
+    color: var(--white);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  label {
+    display: block;
+    font-size: 13px;
     font-weight: 600;
     color: var(--navy);
-    margin: 4px 0 8px;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
   }
-  .gap-fix {
-    font-size: 14px;
-    color: var(--text);
-    line-height: 1.55;
+  .field-group { margin-bottom: 20px; }
+  .field-hint {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 4px;
   }
-  .visibility-note {
-    background: #FFF7ED;
-    border-left: 4px solid var(--warning);
-    padding: 14px 18px;
-    border-radius: 0 8px 8px 0;
-    margin-bottom: 20px;
-    font-size: 14px;
-    color: var(--text);
-    line-height: 1.55;
+  select, input[type="text"], input[type="email"], input[type="number"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    color: var(--charcoal);
+    background: var(--white);
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
   }
-  .visibility-note strong { color: var(--warning); }
-
-  /* Footer */
-  footer {
+  select:focus, input:focus {
+    outline: none;
+    border-color: var(--teal);
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%234a4a4a' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+  .radio-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .radio-option { position: relative; }
+  .radio-option input {
+    position: absolute;
+    opacity: 0;
+  }
+  .radio-option label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 10px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
     text-align: center;
-    padding: 40px 0 60px;
-    color: var(--text-muted);
     font-size: 13px;
+    font-weight: 500;
   }
-  footer a { color: var(--navy); text-decoration: none; font-weight: 500; }
-  footer a:hover { text-decoration: underline; }
-
-  /* Small responsive */
-  @media (max-width: 600px) {
-    .hero { padding: 48px 0 40px; }
-    .hero .logo { max-width: 110px; margin-bottom: 20px; }
-    .hero h1 { font-size: 28px; }
-    .hero .subhead { font-size: 15px; }
-    .question { padding: 20px; }
-    .results { padding: 28px 20px; }
-    .score-num { font-size: 56px; }
+  .radio-option label .tier-name {
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .radio-option label .tier-price {
+    font-size: 11px;
+    color: var(--text-light);
+  }
+  .radio-option input:checked + label {
+    border-color: var(--teal);
+    background: var(--teal-light);
+  }
+  .radio-option input:checked + label .tier-name { color: var(--teal); }
+  /* Zoning Status Badge */
+  .zoning-status {
+    display: none;
+    margin-top: 16px;
+    padding: 16px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .zoning-status.show { display: block; }
+  .zoning-status.green {
+    background: rgba(93, 173, 166, 0.1);
+    border: 1px solid rgba(93, 173, 166, 0.3);
+  }
+  .zoning-status.yellow {
+    background: rgba(232, 180, 50, 0.08);
+    border: 1px solid rgba(232, 180, 50, 0.3);
+  }
+  .zoning-status.red {
+    background: var(--coral-light);
+    border: 1px solid rgba(232, 112, 96, 0.3);
+  }
+  .zoning-status .zoning-label {
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .zoning-status.green .zoning-label { color: #2a8a7e; }
+  .zoning-status.yellow .zoning-label { color: #b8860b; }
+  .zoning-status.red .zoning-label { color: var(--coral); }
+  .zoning-status .zoning-detail { color: var(--charcoal); }
+  .zoning-source {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 8px;
+    font-style: italic;
+  }
+  .btn-calculate {
+    width: 100%;
+    padding: 16px;
+    background: var(--coral);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .btn-calculate:hover {
+    background: var(--coral-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(232, 112, 96, 0.3);
+  }
+  /* Results */
+  .results-section { display: none; }
+  .results-section.show { display: block; }
+  .results-headline {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a4f7a 100%);
+    border-radius: 12px;
+    padding: 32px 28px;
+    margin-bottom: 16px;
+    color: var(--white);
+    box-shadow: var(--shadow-lg);
+  }
+  .results-headline h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    margin-bottom: 4px;
+    border: none;
+    padding: 0;
+    color: var(--white);
+  }
+  .results-headline .location-label {
+    font-size: 13px;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .result-row:last-child { border-bottom: none; }
+  .result-row .rlabel {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+  }
+  .result-row .rvalue {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .result-row .rvalue.coral { color: var(--coral); }
+  .result-row .rvalue.teal { color: var(--teal); }
+  .result-row.highlight {
+    background: rgba(93, 173, 166, 0.1);
+    margin: 4px -12px;
+    padding: 12px;
+    border-radius: 8px;
+    border-bottom: none;
+  }
+  .results-zoning { margin-bottom: 16px; }
+  /* Locked content */
+  .locked-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .locked-card .locked-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 40%, var(--white) 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 28px;
+    z-index: 2;
+  }
+  .locked-overlay .lock-icon { font-size: 32px; margin-bottom: 12px; }
+  .locked-overlay h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 18px;
+    color: var(--navy);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .locked-overlay p {
+    font-size: 14px;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 16px;
+    max-width: 360px;
+  }
+  .email-form {
+    display: flex;
+    width: 100%;
+    max-width: 400px;
+    gap: 8px;
+  }
+  .email-form input {
+    flex: 1;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .email-form button {
+    padding: 12px 20px;
+    background: var(--coral);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .email-form button:hover { background: var(--coral-hover); }
+  .email-privacy {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 8px;
+    text-align: center;
+  }
+  .blurred-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    filter: blur(4px);
+    user-select: none;
+  }
+  /* Unlocked */
+  .unlocked-section { display: none; }
+  .unlocked-section.show { display: block; }
+  .detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .detail-table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: var(--navy);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .detail-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .detail-table tr:nth-child(even) td { background: var(--light-gray); }
+  .detail-table .subtotal td {
+    font-weight: 700;
+    background: var(--teal-light);
+    color: var(--navy);
+  }
+  .financing-card {
+    background: var(--teal-light);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 12px;
+  }
+  .financing-card h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--navy);
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .financing-card p {
+    font-size: 13px;
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+  .financing-card .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .badge.hot { background: var(--coral-light); color: var(--coral); }
+  .badge.available { background: var(--teal-light); color: #2a8a7e; }
+  .calc-footer {
+    text-align: center;
+    padding: 24px 20px;
+    font-size: 12px;
+    color: var(--text-light);
+  }
+  .calc-footer a {
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  @media (max-width: 540px) {
+    .calc-header h1 { font-size: 24px; }
+    .radio-group { grid-template-columns: 1fr; }
+    .email-form { flex-direction: column; }
+    .calc-card { padding: 20px; }
   }
 </style>
 </head>
 <body>
-
-<section class="hero">
-  <div class="container">
-    <img src="iyc-logo.png" alt="Ignite Your Career" class="logo">
-    <h1>Grade Your Scholars Program!</h1>
-    <p class="subhead">Faculty: when your strongest scholars don't land where you'd expect, the gap usually isn't them or the curriculum. Three minutes names the program dimensions to fix first.</p>
+<!-- SITE NAV — matches WordPress header -->
+<nav class="site-nav">
+  <a href="https://thecarriagehousemovement.com" class="brand">
+    <span>THE</span>
+    CARRIAGE HOUSE MOVEMENT
+  </a>
+  <div class="nav-links">
+    <a href="https://thecarriagehousemovement.com/#story">Our Story</a>
+    <a href="https://thecarriagehousemovement.com/#financing">Financing</a>
+    <a href="https://thecarriagehousemovement.com/#videos">Videos</a>
+    <a href="#" class="nav-cta">Calculate Your Cost</a>
   </div>
-</section>
-
-<main>
-  <div class="container">
-
-    <form id="quiz-form" autocomplete="off">
-      <div id="questions"></div>
-
-      <div class="submit-wrap">
-        <p class="progress" id="progress"><strong>0</strong> of 10 answered</p>
-        <button type="submit" class="btn-primary" id="submit-btn" disabled>Answer all 10 to see your results</button>
+</nav>
+<div class="calculator-container">
+  <div class="calc-header">
+    <h1>How Much Will Your Carriage House Cost?</h1>
+    <p>Get a personalized estimate for your city, your garage, your build goals. Real numbers in 60 seconds.</p>
+    <!-- CHANGE 1: Logo area now links to cynthiatrotta.com -->
+    <div class="powered-by">The Carriage House Movement &middot; <a href="https://cynthiatrotta.com">cynthiatrotta.com</a></div>
+  </div>
+  <!-- Step 1: Location -->
+  <div class="calc-card">
+    <h2><span class="step-num">1</span> Your Location</h2>
+    <div class="field-group">
+      <label for="stateSelect">State</label>
+      <select id="stateSelect" onchange="updateCities()">
+        <option value="">Select your state</option>
+        <option value="MA">Massachusetts</option>
+        <option value="NY">New York</option>
+        <option value="OH">Ohio</option>
+        <option value="other_midwest">Other Midwest (IN, MI, WI, MN, IL, IA, MO)</option>
+        <option value="other_southeast">Southeast (GA, FL, NC, SC, TN, AL, VA)</option>
+        <option value="other_south">South (TX, LA, AR, MS, OK)</option>
+        <option value="other_mountain">Mountain (CO, UT, AZ, NM, MT, ID)</option>
+        <option value="other_northeast">Other Northeast (NJ, PA, CT, MD, DC)</option>
+        <option value="other_west">West (CA, WA, OR, NV, HI)</option>
+      </select>
+    </div>
+    <div class="field-group" id="cityGroup" style="display:none;">
+      <label for="citySelect">City / Municipality</label>
+      <select id="citySelect" onchange="showZoning()">
+        <option value="">Select your city</option>
+      </select>
+      <p class="field-hint">Don't see your city? Select "Other" at the bottom of the list.</p>
+    </div>
+    <div class="zoning-status" id="zoningStatus"></div>
+  </div>
+  <!-- Step 2: Property -->
+  <div class="calc-card">
+    <h2><span class="step-num">2</span> Your Property</h2>
+    <div class="field-group">
+      <label for="homeValue">Estimated Home Value ($)</label>
+      <input type="number" id="homeValue" placeholder="e.g. 250000" min="50000" step="5000">
+    </div>
+    <div class="field-group">
+      <label>Garage Size</label>
+      <div class="radio-group">
+        <div class="radio-option">
+          <input type="radio" id="garage1" name="garageSize" value="1car">
+          <label for="garage1"><span class="tier-name">1-Car</span><span class="tier-price">~200 sq ft</span></label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="garage2" name="garageSize" value="2car" checked>
+          <label for="garage2"><span class="tier-name">2-Car</span><span class="tier-price">~400 sq ft</span></label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="garage3" name="garageSize" value="3car">
+          <label for="garage3"><span class="tier-name">3+ Car</span><span class="tier-price">~600 sq ft</span></label>
+        </div>
       </div>
-    </form>
-
-    <section class="results hidden" id="results">
-      <div class="score-display">
-        <span class="score-num" id="score-num" style="color: var(--navy);">0</span><span class="score-max" id="score-max">/ 40</span>
-        <p class="score-band" id="score-band"></p>
-        <p class="score-note" id="score-note" style="display:none;"></p>
+    </div>
+    <div class="field-group">
+      <label for="rentEstimate">Expected Monthly Rent ($)</label>
+      <input type="number" id="rentEstimate" placeholder="e.g. 1200" min="400" step="50">
+      <p class="field-hint">Typical range: $800 - $1,800 depending on market</p>
+    </div>
+  </div>
+  <!-- Step 3: Build Tier -->
+  <div class="calc-card">
+    <h2><span class="step-num">3</span> Build Tier</h2>
+    <div class="radio-group">
+      <div class="radio-option">
+        <input type="radio" id="tierBare" name="buildTier" value="bare">
+        <label for="tierBare"><span class="tier-name">Bare Minimum</span><span class="tier-price">Get it livable</span></label>
       </div>
-
-      <div class="email-gate" id="email-gate">
-        <h3>See your top 3 gaps and what to do about each</h3>
-        <p>Drop your info and I'll send your detailed report — plus a one-page overview of how the methodology works. No follow-up sequence, no spam.</p>
-        <form id="email-form">
-          <div class="form-grid">
-            <input type="text" name="first_name" placeholder="First name" required>
-            <input type="text" name="last_name" placeholder="Last name" required>
-            <input type="text" name="university" placeholder="University" required class="full">
-            <input type="text" name="role" placeholder="Your role (e.g., Director of XYZ Scholars Program)" required class="full">
-            <input type="email" name="email" placeholder="Work email" required class="full">
-            <textarea name="up_at_night" placeholder="Optional: what about your scholars program keeps you up at night?" class="full"></textarea>
-            <input type="hidden" name="score" id="hidden-score">
-            <input type="hidden" name="score_max" id="hidden-score-max">
-            <input type="hidden" name="band" id="hidden-band">
-            <input type="hidden" name="answers" id="hidden-answers">
-          </div>
-          <div style="margin-top: 16px;">
-            <button type="submit" class="btn-primary" id="email-submit">Get my detailed report</button>
-          </div>
+      <div class="radio-option">
+        <input type="radio" id="tierStandard" name="buildTier" value="standard" checked>
+        <label for="tierStandard"><span class="tier-name">Standard</span><span class="tier-price">Quality finish</span></label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" id="tierUpscale" name="buildTier" value="upscale">
+        <label for="tierUpscale"><span class="tier-name">Upscale</span><span class="tier-price">Premium build</span></label>
+      </div>
+    </div>
+  </div>
+  <button class="btn-calculate" onclick="calculate()">Calculate My Carriage House Cost</button>
+  <!-- FREE RESULTS -->
+  <div class="results-section" id="freeResults">
+    <div class="results-headline">
+      <h2>Your Carriage House Estimate</h2>
+      <div class="location-label" id="resultLocation"></div>
+      <div class="result-row highlight">
+        <span class="rlabel">Estimated Build Cost</span>
+        <span class="rvalue coral" id="resultCost"></span>
+      </div>
+      <div class="result-row">
+        <span class="rlabel">Payback Period</span>
+        <span class="rvalue" id="resultPayback"></span>
+      </div>
+      <div class="result-row">
+        <span class="rlabel">Annual ROI</span>
+        <span class="rvalue teal" id="resultROI"></span>
+      </div>
+      <div class="result-row">
+        <span class="rlabel">Monthly Rental Income</span>
+        <span class="rvalue" id="resultRent"></span>
+      </div>
+      <div class="result-row">
+        <span class="rlabel">Est. Property Value Increase</span>
+        <span class="rvalue teal" id="resultAppreciation"></span>
+      </div>
+    </div>
+    <div class="results-zoning" id="resultsZoning"></div>
+    <!-- LOCKED: Line-by-line breakdown -->
+    <div class="calc-card locked-card" id="lockedCard">
+      <h2>Line-by-Line Cost Breakdown</h2>
+      <div class="blurred-row"><span>Demolition & Structural</span><span>$XX,XXX</span></div>
+      <div class="blurred-row"><span>Foundation & Framing</span><span>$XX,XXX</span></div>
+      <div class="blurred-row"><span>Plumbing (rough + finish)</span><span>$XX,XXX</span></div>
+      <div class="blurred-row"><span>Electrical</span><span>$XX,XXX</span></div>
+      <div class="blurred-row"><span>HVAC & Insulation</span><span>$XX,XXX</span></div>
+      <div class="blurred-row"><span>Interior Finish</span><span>$XX,XXX</span></div>
+      <div class="blurred-row"><span>Permits & Fees</span><span>$X,XXX</span></div>
+      <div class="locked-overlay">
+        <div class="lock-icon">&#128274;</div>
+        <h3>Unlock Full Report</h3>
+        <p>Get the line-by-line cost breakdown, tax impact, and financing options for your specific build.</p>
+        <form class="email-form" onsubmit="submitEmail(event)">
+          <input type="email" id="emailInput" placeholder="Enter your email" required>
+          <button type="submit">Unlock Free</button>
         </form>
+        <p class="email-privacy">No spam. Unsubscribe anytime.</p>
       </div>
-
-      <div class="detailed hidden" id="detailed">
-        <h2 style="font-size: 22px; font-weight: 600; color: var(--navy); margin-bottom: 8px;">Your top 3 gaps</h2>
-        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">Where your program scored lowest, and what each module covers.</p>
-
-        <div class="visibility-note" id="visibility-note" style="display:none;"></div>
-
-        <div class="gap-list" id="gap-list"></div>
-
-        <a href="https://calendly.com/cynthia-cynthiatrotta/15min" target="_blank" class="btn-cta" id="cta-btn">Schedule a 15-minute call with Cynthia</a>
-        <p style="text-align: center; margin-top: 16px; font-size: 13px; color: var(--text-muted);">No prep needed — bring your gaps, we'll walk through fit.</p>
-      </div>
-    </section>
-
+    </div>
   </div>
-</main>
-
-<footer>
-  <p>Cynthia Trotta · <a href="https://cynthiatrotta.com">cynthiatrotta.com</a> · <a href="https://www.linkedin.com/in/cynthiatrotta/">LinkedIn</a></p>
-</footer>
-
+  <!-- UNLOCKED RESULTS -->
+  <div class="unlocked-section" id="unlockedResults">
+    <div class="calc-card">
+      <h2>Detailed Cost Breakdown</h2>
+      <table class="detail-table" id="costTable">
+        <thead><tr><th>Line Item</th><th style="text-align:right">Estimated Cost</th></tr></thead>
+        <tbody id="costTableBody"></tbody>
+      </table>
+    </div>
+    <div class="calc-card">
+      <h2>Tax & Value Impact</h2>
+      <div id="taxImpact"></div>
+    </div>
+    <div class="calc-card">
+      <h2>Financing Options</h2>
+      <div id="financingOptions"></div>
+    </div>
+    <div class="calc-card">
+      <h2>Volume Discount Opportunity</h2>
+      <div id="volumeDiscount"></div>
+    </div>
+  </div>
+  <!-- CHANGE 2: cynthiatrotta.com added to calc footer -->
+  <div class="calc-footer">
+    <p>Estimates based on 15 years of research, contractor quotes, and regional construction data.<br>
+    Not financial advice. Actual costs vary by contractor, materials, and site conditions.<br><br>
+    <a href="https://thecarriagehousemovement.com">thecarriagehousemovement.com</a> &mdash; One garage at a time. &middot; <a href="https://cynthiatrotta.com">cynthiatrotta.com</a></p>
+  </div>
+</div>
 <script>
-const questions = [
-  { meta: 'Q1 of 10 · Foundation', text: 'Does your university have foundational career services courses (resume building, mock interviews, career fair prep)?', opts: [
-    { text: 'No structured offering', score: 1 },
-    { text: 'Optional workshops only', score: 2 },
-    { text: 'Required for some majors', score: 3 },
-    { text: 'Required across the business school', score: 4 }
-  ], module: 'Foundation' },
-
-  { meta: 'Q2 of 10 · Foundation', text: 'Is there a Professor of the Practice or industry-hire faculty member embedded in your program?', opts: [
-    { text: 'No', score: 1 },
-    { text: 'Adjunct involvement only', score: 2 },
-    { text: 'One Professor of the Practice', score: 3 },
-    { text: 'Multiple practitioners on faculty', score: 4 }
-  ], module: 'Foundation' },
-
-  { meta: 'Q3 of 10 · Foundation', text: 'What best describes your cohort?', opts: [
-    { text: 'Open enrollment — program serves the broad student body', score: 1 },
-    { text: 'Light application — most who apply get in', score: 2 },
-    { text: 'Selective — chosen for fit and effort', score: 3 },
-    { text: 'Highly selective — small cohort, high-touch', score: 4 }
-  ], module: 'Foundation' },
-
-  { meta: 'Q4 of 10 · Module 1 — Positioning', text: 'Do your scholars do dedicated work identifying the intersection of strengths, market demand, and role fit — their positioning for the job market?', opts: [
-    { text: 'Not addressed', score: 1 },
-    { text: 'Brief advising conversation', score: 2 },
-    { text: 'Workshop or assignment', score: 3 },
-    { text: 'Multi-session module with revision', score: 4 }
-  ], module: 'Positioning' },
-
-  { meta: 'Q5 of 10 · Module 2 — LinkedIn intelligence', text: 'Do your scholars use LinkedIn as a research engine (company hiring patterns, hiring manager identification, connector mapping), or primarily as an online resume?', opts: [
-    { text: 'As an online resume only', score: 1 },
-    { text: 'Profile setup taught, no research', score: 2 },
-    { text: 'Some research and targeting work', score: 3 },
-    { text: 'LinkedIn as primary research tool', score: 4 }
-  ], module: 'LinkedIn Intelligence' },
-
-  { meta: 'Q6 of 10 · Module 3 — Strategic outreach', text: 'In a typical cohort, what percentage of your scholars have directly messaged a hiring manager at a target company before applying?', opts: [
-    { text: 'Under 10 percent', score: 1 },
-    { text: '10 to 30 percent', score: 2 },
-    { text: '30 to 60 percent', score: 3 },
-    { text: 'Over 60 percent', score: 4 },
-    { text: "Honestly, I don't know", score: null }
-  ], module: 'Strategic Outreach' },
-
-  { meta: 'Q7 of 10 · Module 4 — Interview mastery', text: 'Beyond general prep, do your scholars get industry-specific interview coaching (behavioral, technical, case)?', opts: [
-    { text: 'No — general prep only', score: 1 },
-    { text: 'Somewhat — industry tips, no mocks', score: 2 },
-    { text: 'Yes — industry-specific mocks', score: 3 },
-    { text: 'Yes — all three: behavioral, technical, case', score: 4 }
-  ], module: 'Interview Mastery' },
-
-  { meta: 'Q8 of 10 · Module 5 — First 90 days', text: 'Do your scholars get coaching on planning their first 90 days in the role — onboarding strategy, early-tenure relationships, learning curve?', opts: [
-    { text: 'Not addressed', score: 1 },
-    { text: 'Briefly mentioned', score: 2 },
-    { text: 'Optional workshop', score: 3 },
-    { text: 'Embedded module with practice', score: 4 }
-  ], module: 'First 90 Days' },
-
-  { meta: 'Q9 of 10 · Outcomes', text: 'What share of your scholars place at companies outside your immediate region (companies that do not recruit on campus)?', opts: [
-    { text: 'Mostly local placements', score: 1 },
-    { text: 'About 25 percent out-of-region', score: 2 },
-    { text: 'About 50 percent out-of-region', score: 3 },
-    { text: '75 percent or more out-of-region', score: 4 },
-    { text: "Honestly, I don't know", score: null }
-  ], module: 'Out-of-Region Placement' },
-
-  { meta: 'Q10 of 10 · Foundation', text: 'How do you track first-destination outcomes (where scholars land within 6 months of graduation)?', opts: [
-    { text: 'Not tracked', score: 1 },
-    { text: 'Aggregate only', score: 2 },
-    { text: 'By program or major', score: 3 },
-    { text: 'By individual scholar with details', score: 4 }
-  ], module: 'Outcomes Tracking' },
-];
-
-const moduleFixes = {
-  'Positioning': 'Module 1 — scholars define the intersection of their strengths, market demand, and role fit, then build a positioning statement that guides every subsequent decision (resume, LinkedIn, outreach, interviews).',
-  'LinkedIn Intelligence': 'Module 2 — scholars learn LinkedIn as a research engine: company hiring patterns, hiring manager identification, connector mapping. The 90 percent of LinkedIn most students never use.',
-  'Strategic Outreach': 'Module 3 — scholars run a 15-company target campaign with messages that earn replies from hiring managers. Outreach without positioning wastes a scholar\'s best asset: their first impression.',
-  'Interview Mastery': 'Module 4 — industry-specific behavioral, technical, and case prep, plus post-interview follow-up strategy.',
-  'First 90 Days': 'Module 5 — scholars build a 90-day plan before they start: onboarding strategy, early-tenure relationships, and the learning curve that turns a new hire into a trusted teammate.',
-  'Out-of-Region Placement': 'Modules 2 and 3 combined. The gap here is usually outreach-driven — scholars haven\'t built the target list or connector map for firms beyond your campus radius.',
-  'Foundation': 'This sits outside the Ignite Your Career methodology and is worth coordinating on with your campus career services team. Worth raising in the discovery call so we map the full picture.',
-  'Outcomes Tracking': 'Tracking infrastructure is a career services partnership conversation, not a coaching one — but it affects how you measure the impact of any new program you adopt.',
+// ============================================================
+// MUNICIPALITY DATABASE
+// ============================================================
+const MUNICIPALITIES = {
+  MA: {
+    "Boston": {
+      costMult: 1.55, medianRent: 2800, taxRate: 1.05, medianHome: 725000,
+      zoning: "green",
+      zoningLabel: "ADUs Permitted By Right — Statewide Law (Feb 2025)",
+      zoningDetail: "Massachusetts' Affordable Homes Act (Ch. 150, Acts of 2024) allows one ADU up to 900 sq ft by right on any single-family lot statewide, effective February 2, 2025. Boston also participates in the state's $10M ADU assistance program through Massachusetts Housing Partnership. No owner-occupancy requirement under state law.",
+      zoningSource: "mass.gov, Affordable Homes Act (2024), MA Housing Partnership"
+    },
+    "Cambridge": {
+      costMult: 1.60, medianRent: 2900, taxRate: 0.64, medianHome: 900000,
+      zoning: "green",
+      zoningLabel: "ADUs Permitted By Right — Statewide Law + Local Support",
+      zoningDetail: "Cambridge permits ADUs by right under Massachusetts' statewide ADU law (900 sq ft or half primary dwelling, whichever is greater). Cambridge offers a residential tax exemption ($499,263 reduction in taxable value for owner-occupants). The city's dense housing stock makes internal conversions and basement ADUs the most common type.",
+      zoningSource: "mass.gov, cambridgema.gov, Affordable Homes Act (2024)"
+    },
+    "Somerville": {
+      costMult: 1.50, medianRent: 2600, taxRate: 1.02, medianHome: 800000,
+      zoning: "green",
+      zoningLabel: "ADUs Permitted By Right — Statewide Law + Local Support",
+      zoningDetail: "Somerville permits ADUs by right under state law. The city has been proactive on housing density, with its own zoning overhaul in recent years. Residential exemption available for owner-occupants. ADUs up to 900 sq ft (or half primary dwelling size) allowed on single-family lots.",
+      zoningSource: "mass.gov, somervillema.gov, Affordable Homes Act (2024)"
+    },
+    "Worcester": {
+      costMult: 1.10, medianRent: 1500, taxRate: 1.33, medianHome: 430000,
+      zoning: "green",
+      zoningLabel: "ADUs Permitted By Right — Statewide Law",
+      zoningDetail: "Worcester permits ADUs by right under Massachusetts' statewide ADU law. As Central Mass's largest city, Worcester offers significantly lower construction costs than Greater Boston. Median home prices climbed 4.3% in 2025, making ADU rental income increasingly attractive for homeowners.",
+      zoningSource: "mass.gov, Affordable Homes Act (2024)"
+    },
+    "Springfield": {
+      costMult: 1.0, medianRent: 1200, taxRate: 2.02, medianHome: 260000,
+      zoning: "green",
+      zoningLabel: "ADUs Permitted By Right — Statewide Law",
+      zoningDetail: "Springfield permits ADUs by right under state law. As Western Massachusetts' largest city, Springfield has the most affordable housing stock among major MA cities, making ADU conversion economics particularly favorable. Lower land and construction costs with solid rental demand from colleges and healthcare employers.",
+      zoningSource: "mass.gov, Affordable Homes Act (2024)"
+    },
+    "Brookline": {
+      costMult: 1.55, medianRent: 2700, taxRate: 0.98, medianHome: 1100000,
+      zoning: "green",
+      zoningLabel: "ADUs Permitted By Right — Statewide Law",
+      zoningDetail: "Brookline permits ADUs by right under state law. As a historic inner suburb bordering Boston, Brookline's high property values make ADU rental income a strong financial proposition. The town's walkable neighborhoods and transit access make ADU rentals highly desirable.",
+      zoningSource: "mass.gov, Affordable Homes Act (2024)"
+    },
+    "Newton": {
+      costMult: 1.50, medianRent: 2500, taxRate: 1.01, medianHome: 1050000,
+      zoning: "green",
+      zoningLabel: "ADUs Permitted By Right — Statewide Law",
+      zoningDetail: "Newton permits ADUs by right under state law. The city adopted its own ADU-friendly zoning updates in recent years. Large lot sizes in many Newton neighborhoods are well-suited for detached ADUs and carriage house conversions.",
+      zoningSource: "mass.gov, Affordable Homes Act (2024)"
+    },
+    "Other Massachusetts City": {
+      costMult: 1.20, medianRent: 1800, taxRate: 1.30, medianHome: 500000,
+      zoning: "green",
+      zoningLabel: "ADUs Permitted By Right — Statewide Law (Feb 2025)",
+      zoningDetail: "All Massachusetts municipalities must allow ADUs by right under the Affordable Homes Act (effective Feb 2, 2025). One ADU up to 900 sq ft (or half primary dwelling size, whichever is greater) per single-family lot. In 2025 alone, 1,224 ADUs were approved statewide with 1,639 applications filed. Sign up to be notified when your city gets detailed data.",
+      zoningSource: "mass.gov, Affordable Homes Act (2024)"
+    }
+  },
+  NY: {
+    "New York City": {
+      costMult: 1.65, medianRent: 2500, taxRate: 0.88, medianHome: 768000,
+      zoning: "green",
+      zoningLabel: "ADUs Permitted — City of Yes + Plus One Program",
+      zoningDetail: "NYC legalized Ancillary Dwelling Units in 2025 under the City of Yes housing initiative. Applications opened September 2025. The NYS Plus One ADU Program provides up to $125,000 in grants per homeowner for design, permitting, and construction. NYC launched an ADU For You platform with pre-approved designs in March 2026. Both attached and detached ADUs permitted.",
+      zoningSource: "nyc.gov/buildings, hcr.ny.gov, NYC HPD Plus One ADU Program"
+    },
+    "Buffalo": {
+      costMult: 0.95, medianRent: 1100, taxRate: 2.50, medianHome: 205000,
+      zoning: "green",
+      zoningLabel: "ADUs Permitted — BURA ADU Program Active",
+      zoningDetail: "Buffalo permits ADUs in certain residential zoning districts under the Green Code (Unified Development Ordinance). The Buffalo Urban Renewal Agency (BURA) runs an active ADU program providing technical and financial assistance. The city participates in the NYS Plus One ADU Program ($125K grants available).",
+      zoningSource: "buffalourbanrenewal.com, buffalony.gov Green Code"
+    },
+    "Rochester": {
+      costMult: 0.93, medianRent: 1100, taxRate: 2.80, medianHome: 160000,
+      zoning: "yellow",
+      zoningLabel: "In Progress — ADU Legislation Under Review",
+      zoningDetail: "Rochester's ADU zoning is evolving. NYS Assembly Bill A4854 aims to streamline ADU permits statewide, which would directly benefit Rochester homeowners. Rochester is the #2 ranked housing market for 2026 (Realtor.com), with strong rental demand. Median home prices remain affordable at $160K, making ADU conversion economics very favorable.",
+      zoningSource: "NYS Assembly Bill A4854, Realtor.com (2026)"
+    },
+    "Syracuse": {
+      costMult: 0.95, medianRent: 1050, taxRate: 2.70, medianHome: 180000,
+      zoning: "green",
+      zoningLabel: "ADUs Permitted — One Per Property",
+      zoningDetail: "Syracuse allows one ADU per property with a single-family home. Both attached and detached ADUs are permitted. Detached units must be at the side or rear of the primary structure and are limited to one bedroom. Syracuse participates in regional housing discussions and may be eligible for NYS Plus One funding.",
+      zoningSource: "syracuse.ny.us zoning code"
+    },
+    "Yonkers": {
+      costMult: 1.40, medianRent: 2300, taxRate: 1.60, medianHome: 505000,
+      zoning: "yellow",
+      zoningLabel: "In Progress — State Legislation Pending",
+      zoningDetail: "Yonkers ADU policy is being shaped by NYS Assembly Bill A4854, which would facilitate ADU creation statewide. As Westchester County's largest city, Yonkers has strong rental demand ($2,300+ average rent). The city must comply with building codes and zoning laws for any accessory structures. Check with Planning Department for current requirements.",
+      zoningSource: "steadily.com, NYS Assembly Bill A4854"
+    },
+    "Albany": {
+      costMult: 1.05, medianRent: 1400, taxRate: 2.40, medianHome: 220000,
+      zoning: "yellow",
+      zoningLabel: "In Progress — Legislation Being Considered",
+      zoningDetail: "Albany does not currently permit ADUs by right, but legislation is being considered. As the state capital, Albany is well-positioned to benefit from the statewide ADU push through Assembly Bill A4854. Strong rental demand from state government and university employees.",
+      zoningSource: "ecode360.com/Albany, NYS legislature"
+    },
+    "Ithaca": {
+      costMult: 1.15, medianRent: 1600, taxRate: 2.10, medianHome: 310000,
+      zoning: "green",
+      zoningLabel: "ADUs Permitted — Progressive Zoning",
+      zoningDetail: "Ithaca has been a leader in progressive housing policy in upstate New York. The city permits ADUs in residential zones and has explored eliminating single-family-only zoning. Strong rental demand from Cornell University and Ithaca College makes ADU income highly reliable.",
+      zoningSource: "cityofithaca.org zoning code"
+    },
+    "Other New York City": {
+      costMult: 1.15, medianRent: 1400, taxRate: 2.20, medianHome: 280000,
+      zoning: "yellow",
+      zoningLabel: "Check Your Local Zoning — State Push Underway",
+      zoningDetail: "New York State is actively expanding ADU laws through Assembly Bill A4854 and the $85M Plus One ADU Program. Up to $125,000 in grants available per homeowner through the state program. 50 municipalities now participate in Plus One. Contact your city's planning department for current ADU regulations. Sign up to be notified when your city is added.",
+      zoningSource: "hcr.ny.gov, NYS Assembly Bill A4854"
+    }
+  },
+  OH: {
+    "Cleveland Heights": {
+      costMult: 1.0, medianRent: 1200, taxRate: 2.56, medianHome: 165000,
+      zoning: "yellow",
+      zoningLabel: "In Progress — ADU Zoning Under Development",
+      zoningDetail: "Cleveland Heights is actively developing ADU zoning amendments with the Cuyahoga County Planning Commission. An ADU Design Competition funded by AARP announced 5 winning pre-approved designs in December 2024. Community input meetings planned for Fall 2025. Zoning text amendments drafted but not yet formally adopted.",
+      zoningSource: "clevelandheights.gov, Cuyahoga County Planning Commission (2024–2025)"
+    },
+    "Lakewood": {
+      costMult: 1.02, medianRent: 1100, taxRate: 2.41, medianHome: 190000,
+      zoning: "green",
+      zoningLabel: "ADUs Permitted — R-2 Zoning Districts",
+      zoningDetail: "Lakewood permits ADUs on R-2 (Single- and Two-Family) zoned properties. Owner must occupy either the primary dwelling or the ADU. One off-street parking space required. Cannot be separately sold. Must be approved by the Architectural Board of Review.",
+      zoningSource: "lakewoodoh.gov, Lakewood Municipal Code 18A.40.110"
+    },
+    "Shaker Heights": {
+      costMult: 1.05, medianRent: 1400, taxRate: 2.78, medianHome: 230000,
+      zoning: "red",
+      zoningLabel: "Not Currently Permitted",
+      zoningDetail: "Shaker Heights does not currently have an ADU zoning ordinance. The city is a First Suburbs Consortium member and has participated in regional ADU discussions. Homeowners should contact the Planning Department and consider advocating through City Council.",
+      zoningSource: "First Suburbs Consortium, Cuyahoga County Planning"
+    },
+    "University Heights": {
+      costMult: 1.0, medianRent: 1150, taxRate: 2.67, medianHome: 155000,
+      zoning: "red",
+      zoningLabel: "Not Currently Permitted",
+      zoningDetail: "University Heights does not currently have a specific ADU zoning ordinance. As a First Suburbs Consortium member, the city is part of regional housing discussions.",
+      zoningSource: "First Suburbs Consortium"
+    },
+    "South Euclid": {
+      costMult: 0.97, medianRent: 1050, taxRate: 2.59, medianHome: 130000,
+      zoning: "yellow",
+      zoningLabel: "Pilot Program — Expanded Accessory Uses Under Review",
+      zoningDetail: "South Euclid participated in the Cuyahoga County Planning Commission’s Single-Family Zoning Analysis, which included expanding permitted accessory uses. ADU-specific text amendments are being explored as part of the First Suburbs zoning modernization initiative.",
+      zoningSource: "Cuyahoga County Planning Commission"
+    },
+    "Euclid": {
+      costMult: 0.95, medianRent: 950, taxRate: 2.72, medianHome: 100000,
+      zoning: "yellow",
+      zoningLabel: "Pilot Program — Expanded Accessory Uses Under Review",
+      zoningDetail: "Euclid participated in the Cuyahoga County Single-Family Zoning Analysis as a pilot community. Expanded permitted uses being explored. ADU-specific ordinance not yet adopted.",
+      zoningSource: "Cuyahoga County Planning Commission"
+    },
+    "Maple Heights": {
+      costMult: 0.93, medianRent: 900, taxRate: 2.85, medianHome: 85000,
+      zoning: "red",
+      zoningLabel: "Not Currently Permitted",
+      zoningDetail: "Maple Heights does not currently permit ADUs. As a First Suburbs Consortium member, the city may benefit from regional zoning modernization efforts.",
+      zoningSource: "First Suburbs Consortium"
+    },
+    "Garfield Heights": {
+      costMult: 0.93, medianRent: 900, taxRate: 2.74, medianHome: 90000,
+      zoning: "red",
+      zoningLabel: "Not Currently Permitted",
+      zoningDetail: "Garfield Heights does not currently have an ADU ordinance. Contact the city’s Planning and Zoning Department for current accessory structure regulations.",
+      zoningSource: "First Suburbs Consortium"
+    },
+    "Bedford": {
+      costMult: 0.94, medianRent: 950, taxRate: 2.63, medianHome: 110000,
+      zoning: "red",
+      zoningLabel: "Not Currently Permitted",
+      zoningDetail: "Bedford does not currently permit ADUs by right. Home to the First Suburbs Consortium’s director, the city may be among those considering future ADU-friendly policy.",
+      zoningSource: "First Suburbs Consortium"
+    },
+    "Parma": {
+      costMult: 0.98, medianRent: 1100, taxRate: 2.35, medianHome: 150000,
+      zoning: "red",
+      zoningLabel: "Not Currently Permitted",
+      zoningDetail: "Parma does not currently have an ADU ordinance. As Cuyahoga County’s largest suburb and a First Suburbs member, any ADU policy adoption here would have significant regional impact.",
+      zoningSource: "First Suburbs Consortium"
+    },
+    "Columbus": {
+      costMult: 1.03, medianRent: 1300, taxRate: 1.78, medianHome: 250000,
+      zoning: "green",
+      zoningLabel: "ADUs Permitted — All Residential Districts (Dec 2025)",
+      zoningDetail: "Columbus City Council adopted the ADU Pilot Program in November 2025, effective December 24, 2025. ADUs allowed by right in all residential and apartment residential districts. No additional off-street parking required. Historic areas may need additional approvals.",
+      zoningSource: "Columbus City Council, Title 33 (Nov 2025)"
+    },
+    "Cincinnati": {
+      costMult: 1.02, medianRent: 1250, taxRate: 2.10, medianHome: 210000,
+      zoning: "green",
+      zoningLabel: "ADUs Permitted (2023) — Low Adoption So Far",
+      zoningDetail: "Cincinnati was the first Ohio city to legalize ADUs in 2023. Structures up to 800 sq ft and under 13 ft may not require permits. Only 4 ADU permit requests in year one — a key data point for the adoption gap your movement addresses.",
+      zoningSource: "cincinnati-oh.gov, WOSU Public Media (Jan 2025)"
+    },
+    "Cleveland": {
+      costMult: 0.95, medianRent: 1000, taxRate: 2.83, medianHome: 100000,
+      zoning: "yellow",
+      zoningLabel: "Limited — Conditional Use in Some Districts",
+      zoningDetail: "Cleveland allows some accessory structures but lacks a comprehensive ADU ordinance. Conditional use approval or variance may be required depending on zoning district.",
+      zoningSource: "Cleveland zoning code"
+    },
+    "Other Ohio City": {
+      costMult: 1.0, medianRent: 1100, taxRate: 2.30, medianHome: 175000,
+      zoning: "yellow",
+      zoningLabel: "Check Your Local Zoning",
+      zoningDetail: "ADU regulations vary widely across Ohio municipalities. Most cities do not yet have specific ADU ordinances, but this is changing rapidly. Contact your city’s planning department. Sign up to be notified when your city is added to our database.",
+      zoningSource: ""
+    }
+  },
+  other_midwest: {
+    "Other Midwest City": {
+      costMult: 1.0, medianRent: 1100, taxRate: 2.0, medianHome: 200000,
+      zoning: "yellow", zoningLabel: "Check Your Local Zoning",
+      zoningDetail: "ADU regulations vary by municipality. Contact your city’s planning department. Sign up to be notified when we add your city.", zoningSource: ""
+    }
+  },
+  other_southeast: {
+    "Other Southeast City": {
+      costMult: 1.05, medianRent: 1300, taxRate: 1.2, medianHome: 275000,
+      zoning: "yellow", zoningLabel: "Check Your Local Zoning",
+      zoningDetail: "ADU regulations vary by municipality. Contact your city’s planning department. Sign up to be notified when we add your city.", zoningSource: ""
+    }
+  },
+  other_south: {
+    "Other South City": {
+      costMult: 1.08, medianRent: 1200, taxRate: 1.5, medianHome: 250000,
+      zoning: "yellow", zoningLabel: "Check Your Local Zoning",
+      zoningDetail: "ADU regulations vary by municipality. Contact your city’s planning department.", zoningSource: ""
+    }
+  },
+  other_mountain: {
+    "Other Mountain City": {
+      costMult: 1.18, medianRent: 1500, taxRate: 0.9, medianHome: 400000,
+      zoning: "yellow", zoningLabel: "Check Your Local Zoning",
+      zoningDetail: "ADU regulations vary by municipality. Contact your city’s planning department.", zoningSource: ""
+    }
+  },
+  other_northeast: {
+    "Other Northeast City": {
+      costMult: 1.35, medianRent: 1800, taxRate: 2.2, medianHome: 350000,
+      zoning: "yellow", zoningLabel: "Check Your Local Zoning",
+      zoningDetail: "ADU regulations vary by municipality across the Northeast. NJ, CT, and PA are exploring ADU-friendly policies. Contact your city’s planning department. Sign up to be notified when your state is added.", zoningSource: ""
+    }
+  },
+  other_west: {
+    "Other West City": {
+      costMult: 1.55, medianRent: 2200, taxRate: 1.1, medianHome: 550000,
+      zoning: "yellow", zoningLabel: "Check Your Local Zoning",
+      zoningDetail: "ADU regulations vary by municipality. Contact your city’s planning department.", zoningSource: ""
+    }
+  }
 };
-
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xvzyjwlq';
-
-const root = document.getElementById('questions');
-const submitBtn = document.getElementById('submit-btn');
-const progressEl = document.getElementById('progress');
-const resultsEl = document.getElementById('results');
-const scoreNumEl = document.getElementById('score-num');
-const scoreMaxEl = document.getElementById('score-max');
-const scoreBandEl = document.getElementById('score-band');
-const scoreNoteEl = document.getElementById('score-note');
-const emailGateEl = document.getElementById('email-gate');
-const detailedEl = document.getElementById('detailed');
-const gapListEl = document.getElementById('gap-list');
-const visibilityNoteEl = document.getElementById('visibility-note');
-const quizForm = document.getElementById('quiz-form');
-const emailForm = document.getElementById('email-form');
-const answers = {};
-
-questions.forEach((q, i) => {
-  const card = document.createElement('div');
-  card.className = 'question';
-  card.id = `question-${i}`;
-  card.innerHTML = `<div class="q-meta">${q.meta}</div><div class="q-text">${q.text}</div><div class="q-opts" data-q="${i}"></div>`;
-  const optsEl = card.querySelector('.q-opts');
-  q.opts.forEach((opt) => {
-    const label = document.createElement('label');
-    label.className = 'q-opt' + (opt.score === null ? ' dontknow' : '');
-    label.innerHTML = `<input type="radio" name="q${i}"><span class="dot"></span><span>${opt.text}</span>`;
-    label.addEventListener('click', (e) => {
-      e.preventDefault();
-      optsEl.querySelectorAll('.q-opt').forEach(el => el.classList.remove('selected'));
-      label.classList.add('selected');
-      card.classList.add('answered');
-      answers[i] = { score: opt.score, module: q.module, optionText: opt.text };
-      updateProgress();
+const BASE_COSTS = {
+  bare: { total: 140000, lines: [
+    ["Demolition & site prep", 8000], ["Foundation reinforcement", 12000],
+    ["Structural framing (2nd floor)", 22000], ["Roofing", 8000],
+    ["Exterior siding & windows", 14000], ["Plumbing (rough + finish)", 20000],
+    ["Electrical", 10000], ["HVAC & insulation", 15000],
+    ["Interior walls & drywall", 8000], ["Flooring (basic)", 5000],
+    ["Kitchen (basic)", 8000], ["Bathroom (basic)", 6000], ["Permits & fees", 4000]
+  ]},
+  standard: { total: 160000, lines: [
+    ["Demolition & site prep", 10000], ["Foundation reinforcement", 14000],
+    ["Structural framing (2nd floor)", 24000], ["Roofing", 10000],
+    ["Exterior siding & windows", 16000], ["Plumbing (rough + finish)", 22000],
+    ["Electrical", 12000], ["HVAC & insulation", 18000],
+    ["Interior walls & drywall", 9000], ["Flooring (mid-grade)", 7000],
+    ["Kitchen (standard)", 10000], ["Bathroom (standard)", 8000], ["Permits & fees", 5000]
+  ]},
+  upscale: { total: 195000, lines: [
+    ["Demolition & site prep", 12000], ["Foundation reinforcement", 16000],
+    ["Structural framing (2nd floor)", 28000], ["Roofing (premium)", 14000],
+    ["Exterior siding & windows (premium)", 20000], ["Plumbing (premium fixtures)", 26000],
+    ["Electrical (smart home)", 15000], ["HVAC & insulation (high-efficiency)", 22000],
+    ["Interior walls & drywall", 10000], ["Flooring (hardwood/tile)", 10000],
+    ["Kitchen (upscale)", 14000], ["Bathroom (upscale)", 12000], ["Permits & fees", 6000]
+  ]}
+};
+const GARAGE_MULT = { "1car": 0.8, "2car": 1.0, "3car": 1.15 };
+function updateCities() {
+  const state = document.getElementById('stateSelect').value;
+  const cityGroup = document.getElementById('cityGroup');
+  const citySelect = document.getElementById('citySelect');
+  document.getElementById('zoningStatus').className = 'zoning-status';
+  citySelect.innerHTML = '<option value="">Select your city</option>';
+  if (!state) { cityGroup.style.display = 'none'; return; }
+  const cities = MUNICIPALITIES[state];
+  if (cities) {
+    Object.keys(cities).sort().forEach(city => {
+      const opt = document.createElement('option');
+      opt.value = city; opt.textContent = city;
+      citySelect.appendChild(opt);
     });
-    optsEl.appendChild(label);
-  });
-  root.appendChild(card);
-});
-
-function updateProgress() {
-  const count = Object.keys(answers).length;
-  progressEl.innerHTML = `<strong>${count}</strong> of 10 answered`;
-  if (count === questions.length) {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Show my results';
-  } else {
-    submitBtn.disabled = true;
-    submitBtn.textContent = `Answer ${questions.length - count} more to see your results`;
   }
+  cityGroup.style.display = 'block';
 }
-
-quizForm.addEventListener('submit', (e) => {
+function showZoning() {
+  const state = document.getElementById('stateSelect').value;
+  const city = document.getElementById('citySelect').value;
+  const zoningEl = document.getElementById('zoningStatus');
+  if (!state || !city) { zoningEl.className = 'zoning-status'; return; }
+  const muni = MUNICIPALITIES[state]?.[city];
+  if (!muni) { zoningEl.className = 'zoning-status'; return; }
+  zoningEl.className = 'zoning-status show ' + muni.zoning;
+  zoningEl.innerHTML = '<div class="zoning-label">' + muni.zoningLabel + '</div>' +
+    '<div class="zoning-detail">' + muni.zoningDetail + '</div>' +
+    (muni.zoningSource ? '<div class="zoning-source">Source: ' + muni.zoningSource + '</div>' : '');
+  const rentInput = document.getElementById('rentEstimate');
+  if (!rentInput.value && muni.medianRent) rentInput.value = muni.medianRent;
+  const homeInput = document.getElementById('homeValue');
+  if (!homeInput.value && muni.medianHome) homeInput.value = muni.medianHome;
+}
+function fmt(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+function calculate() {
+  const state = document.getElementById('stateSelect').value;
+  const city = document.getElementById('citySelect').value;
+  const homeValue = parseFloat(document.getElementById('homeValue').value) || 0;
+  const garageSize = document.querySelector('input[name="garageSize"]:checked')?.value || '2car';
+  const buildTier = document.querySelector('input[name="buildTier"]:checked')?.value || 'standard';
+  const rent = parseFloat(document.getElementById('rentEstimate').value) || 0;
+  if (!state || !city) { alert('Please select your state and city.'); return; }
+  if (!homeValue) { alert('Please enter your estimated home value.'); return; }
+  if (!rent) { alert('Please enter an expected monthly rent.'); return; }
+  const muni = MUNICIPALITIES[state]?.[city];
+  if (!muni) return;
+  const totalCost = Math.round(BASE_COSTS[buildTier].total * muni.costMult * GARAGE_MULT[garageSize]);
+  const annualRent = rent * 12;
+  const paybackYears = (totalCost / annualRent).toFixed(1);
+  const roi = ((annualRent / totalCost) * 100).toFixed(0);
+  const appreciation = Math.round(totalCost * 0.35);
+  const locationLabel = city.includes('Other') ? state.replace('other_', '').replace(/_/g, ' ') : city + ', ' + state;
+  document.getElementById('resultLocation').textContent = locationLabel;
+  document.getElementById('resultCost').textContent = fmt(totalCost);
+  document.getElementById('resultPayback').textContent = paybackYears + ' years';
+  document.getElementById('resultROI').textContent = roi + '%';
+  document.getElementById('resultRent').textContent = fmt(rent) + '/month';
+  document.getElementById('resultAppreciation').textContent = '+' + fmt(appreciation);
+  document.getElementById('freeResults').classList.add('show');
+  document.getElementById('resultsZoning').innerHTML = '<div class="zoning-status show ' + muni.zoning + '" style="display:block;">' +
+    '<div class="zoning-label">' + muni.zoningLabel + '</div>' +
+    '<div class="zoning-detail">' + muni.zoningDetail + '</div></div>';
+  window._calcData = { totalCost, costMult: muni.costMult, garageMult: GARAGE_MULT[garageSize], buildTier, rent, homeValue, muni, city, state, locationLabel, annualRent, paybackYears, roi, appreciation };
+  document.getElementById('freeResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function submitEmail(e) {
   e.preventDefault();
-  if (Object.keys(answers).length < questions.length) return;
-
-  const scoredAnswers = Object.values(answers).filter(a => a.score !== null);
-  const dontKnowCount = questions.length - scoredAnswers.length;
-  const total = scoredAnswers.reduce((sum, a) => sum + a.score, 0);
-  const maxPossible = scoredAnswers.length * 4;
-  const percent = maxPossible > 0 ? total / maxPossible : 0;
-
-  let band, bandColor;
-  if (percent >= 0.90) { band = 'Best-in-class — your program is in the top tier of cohort design.'; bandColor = 'var(--success)'; }
-  else if (percent >= 0.70) { band = 'Solid foundation with specific gaps worth closing.'; bandColor = 'var(--navy)'; }
-  else if (percent >= 0.45) { band = 'Significant gaps. Your scholars are working harder than they need to.'; bandColor = 'var(--warning)'; }
-  else { band = 'Early stage. Most of the structure is still ahead of you.'; bandColor = 'var(--danger)'; }
-
-  scoreNumEl.textContent = total;
-  scoreNumEl.style.color = bandColor;
-  scoreMaxEl.textContent = `/ ${maxPossible}`;
-  scoreBandEl.textContent = band;
-  scoreBandEl.style.color = bandColor;
-
-  if (dontKnowCount > 0) {
-    scoreNoteEl.style.display = 'block';
-    scoreNoteEl.textContent = dontKnowCount === 1
-      ? '1 question marked "don\'t know" — excluded from your score.'
-      : `${dontKnowCount} questions marked "don't know" — excluded from your score.`;
-  } else {
-    scoreNoteEl.style.display = 'none';
-  }
-
-  document.getElementById('hidden-score').value = total;
-  document.getElementById('hidden-score-max').value = maxPossible;
-  document.getElementById('hidden-band').value = band;
-  document.getElementById('hidden-answers').value = JSON.stringify(
-    Object.entries(answers).reduce((obj, [i, a]) => {
-      obj[`Q${parseInt(i)+1}`] = a.score === null ? `Don't know — ${a.optionText}` : `${a.score}/4 — ${a.optionText}`;
-      return obj;
-    }, {})
-  );
-
-  resultsEl.classList.remove('hidden');
-  resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-
-emailForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const btn = document.getElementById('email-submit');
+  const email = document.getElementById('emailInput').value;
+  const d = window._calcData;
+  const btn = e.target.querySelector('button');
   btn.textContent = 'Sending...';
   btn.disabled = true;
-
-  const formData = new FormData(emailForm);
-
-  try {
-    if (FORMSPREE_ENDPOINT && FORMSPREE_ENDPOINT !== 'FORMSPREE_ENDPOINT_HERE') {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (!response.ok) throw new Error('Submission failed');
+  const tierLabel = d.buildTier === 'bare' ? 'Bare Minimum' : d.buildTier === 'standard' ? 'Standard' : 'Upscale';
+  const lines = BASE_COSTS[d.buildTier].lines;
+  var lineItems = '';
+  lines.forEach(function(item) {
+    var adjusted = Math.round(item[1] * d.costMult * d.garageMult);
+    lineItems += item[0] + ': $' + adjusted.toLocaleString() + ' | ';
+  });
+  fetch('https://api.convertkit.com/v3/forms/9261788/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      api_key: 'VQX_gj6gePaMoam7yK6RwA',
+      email: email,
+      fields: {
+        city: d.city,
+        state: d.state,
+        build_tier: tierLabel,
+        garage_size: d.garageMult === 0.8 ? '1-Car' : d.garageMult === 1.0 ? '2-Car' : '3-Car',
+        estimated_cost: '$' + d.totalCost.toLocaleString(),
+        monthly_rent: '$' + d.rent.toLocaleString(),
+        annual_rent: '$' + d.annualRent.toLocaleString(),
+        payback_years: d.paybackYears + ' years',
+        roi: d.roi + '%',
+        home_value: '$' + d.homeValue.toLocaleString(),
+        appreciation: '+$' + d.appreciation.toLocaleString(),
+        zoning_status: d.muni.zoningLabel,
+        line_items: lineItems
+      },
+      tags: ['calculator-lead']
+    })
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    if (data.subscription) {
+      showUnlockedResults();
+    } else {
+      btn.textContent = 'Unlock Full Report';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again.');
     }
-    showDetailedResults();
-  } catch (error) {
-    btn.textContent = 'Send again';
-    btn.disabled = false;
-    alert('Something went wrong on our end. Send again, or email cynthia@cynthiatrotta.com directly.');
-  }
-});
-
-function showDetailedResults() {
-  const sorted = Object.entries(answers)
-    .filter(([i, a]) => a.score !== null)
-    .map(([i, a]) => ({ i: parseInt(i), ...a, question: questions[parseInt(i)] }))
-    .sort((a, b) => a.score - b.score);
-  const top3 = sorted.slice(0, 3);
-
-  const dontKnowQs = Object.entries(answers)
-    .filter(([i, a]) => a.score === null)
-    .map(([i]) => questions[parseInt(i)].module);
-
-  if (dontKnowQs.length > 0) {
-    const modulesText = dontKnowQs.length === 1
-      ? dontKnowQs[0]
-      : dontKnowQs.slice(0, -1).join(', ') + ' and ' + dontKnowQs[dontKnowQs.length - 1];
-    visibilityNoteEl.style.display = 'block';
-    visibilityNoteEl.innerHTML = `<strong>Visibility gap:</strong> you marked "don't know" on ${modulesText}. That's its own signal — bring it to the discovery call and we'll map what to track.`;
-  } else {
-    visibilityNoteEl.style.display = 'none';
-  }
-
-  gapListEl.innerHTML = top3.map((g, rank) => {
-    const fix = moduleFixes[g.module] || '';
-    return `<div class="gap-card">
-      <div class="gap-rank">Gap ${rank + 1} · Scored ${g.score} of 4</div>
-      <div class="gap-title">${g.question.module}</div>
-      <div class="gap-fix">${fix}</div>
-    </div>`;
-  }).join('');
-
-  emailGateEl.style.display = 'none';
-  detailedEl.classList.remove('hidden');
-  detailedEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  })
+  .catch(function() {
+    showUnlockedResults();
+  });
+}
+function showUnlockedResults() {
+  const d = window._calcData;
+  if (!d) return;
+  const lines = BASE_COSTS[d.buildTier].lines;
+  const tbody = document.getElementById('costTableBody');
+  tbody.innerHTML = '';
+  lines.forEach(function(item) {
+    const adjusted = Math.round(item[1] * d.costMult * d.garageMult);
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + item[0] + '</td><td style="text-align:right">' + fmt(adjusted) + '</td>';
+    tbody.appendChild(tr);
+  });
+  var totalRow = document.createElement('tr');
+  totalRow.className = 'subtotal';
+  totalRow.innerHTML = '<td>Total Estimated Cost</td><td style="text-align:right">' + fmt(d.totalCost) + '</td>';
+  tbody.appendChild(totalRow);
+  var newValue = d.homeValue + d.appreciation;
+  var currentTax = d.homeValue * (d.muni.taxRate / 100);
+  var newTax = newValue * (d.muni.taxRate / 100);
+  var taxIncrease = newTax - currentTax;
+  document.getElementById('taxImpact').innerHTML =
+    '<table class="detail-table">' +
+    '<tr><td>Current Home Value</td><td style="text-align:right">' + fmt(d.homeValue) + '</td></tr>' +
+    '<tr><td>Estimated Value After ADU (+35%)</td><td style="text-align:right">' + fmt(newValue) + '</td></tr>' +
+    '<tr><td>Current Annual Property Tax (' + d.muni.taxRate + '%)</td><td style="text-align:right">' + fmt(currentTax) + '</td></tr>' +
+    '<tr><td>New Annual Property Tax</td><td style="text-align:right">' + fmt(newTax) + '</td></tr>' +
+    '<tr class="subtotal"><td>Annual Tax Increase</td><td style="text-align:right">' + fmt(taxIncrease) + '</td></tr>' +
+    '<tr><td>Net Annual Income (rent − tax increase)</td><td style="text-align:right;color:#2a8a7e;font-weight:700">' + fmt(d.annualRent - taxIncrease) + '</td></tr>' +
+    '</table>';
+  var fannieIncome = Math.round(d.rent * 0.75);
+  document.getElementById('financingOptions').innerHTML =
+    '<div class="financing-card"><div class="badge hot">Effective March 31, 2026</div>' +
+    '<h4>Fannie Mae HomeStyle Refresh</h4>' +
+    '<p>ADU rental income counts toward mortgage qualification (up to 30% of total income, 75% of market rent). Expanded to 3 ADUs on single-unit properties. At your rent of ' + fmt(d.rent) + '/month, Fannie Mae would count ' + fmt(fannieIncome) + '/month toward qualifying income.</p></div>' +
+    '<div class="financing-card"><div class="badge available">Available Now</div>' +
+    '<h4>Freddie Mac CHOICERenovation</h4>' +
+    '<p>Finance up to 75% of after-renovation value. At ' + fmt(newValue) + ' post-ADU, you could access up to ' + fmt(Math.round(newValue * 0.75)) + '. Factory-built and site-built ADUs eligible.</p></div>' +
+    '<div class="financing-card"><div class="badge available">Available Now</div>' +
+    '<h4>HELOC (Home Equity Line of Credit)</h4>' +
+    '<p>At ' + fmt(d.homeValue) + ' home value with 80% LTV, up to ' + fmt(Math.round(d.homeValue * 0.8)) + ' in available equity (minus existing mortgage). Monthly payments offset by ' + fmt(d.rent) + '/month rental income.</p></div>';
+  var discounted = Math.round(d.totalCost * 0.85);
+  document.getElementById('volumeDiscount').innerHTML =
+    '<p style="font-size:15px;margin-bottom:16px;">If your community reaches critical mass of conversions, prefab and volume purchasing could reduce costs by up to 15%.</p>' +
+    '<table class="detail-table">' +
+    '<tr><td>Your Individual Build Cost</td><td style="text-align:right">' + fmt(d.totalCost) + '</td></tr>' +
+    '<tr><td>With 15% Volume Discount</td><td style="text-align:right;color:#2a8a7e;font-weight:700">' + fmt(discounted) + '</td></tr>' +
+    '<tr class="subtotal"><td>Your Savings</td><td style="text-align:right">' + fmt(d.totalCost - discounted) + '</td></tr></table>' +
+    '<p style="font-size:13px;color:var(--text-light);margin-top:12px;">This is why the movement matters. More builds = lower costs for everyone.</p>';
+  document.getElementById('lockedCard').style.display = 'none';
+  document.getElementById('unlockedResults').classList.add('show');
+  document.getElementById('unlockedResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+<!-- SITE FOOTER — matches WordPress footer -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="font-family:'Playfair Display',Georgia,serif; font-size:18px; font-weight:700; color:#fff; margin-bottom:8px;">
+        <span style="color:#5dada6; font-size:10px; font-family:'Inter',sans-serif; letter-spacing:3px; display:block; font-weight:500;">THE</span>
+        CARRIAGE HOUSE MOVEMENT
+      </div>
+      <p style="font-size:13px; line-height:1.6; margin:0;">Helping families turn aging garages into carriage houses, rental income, and multigenerational homes.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="#">Cost Calculator</a>
+      <a href="https://thecarriagehousemovement.com/#financing">Financing Guide</a>
+    </div>
+    <div class="footer-col">
+      <h4>Community</h4>
+      <a href="https://thecarriagehousemovement.com/#story">About Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Follow</h4>
+      <div class="social-links">
+        <a href="https://www.instagram.com/thecarriagehousemovement/" target="_blank" class="social-link">IG</a>
+        <a href="https://www.facebook.com/thecarriagehousemovement" target="_blank" class="social-link">FB</a>
+        <a href="https://www.linkedin.com/company/the-carriage-house-movement/" target="_blank" class="social-link">LI</a>
+        <a href="#" class="social-link">YT</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 The Carriage House Movement. All rights reserved. &middot; <a href="https://cynthiatrotta.com" style="color:rgba(255,255,255,0.5);">cynthiatrotta.com</a></span>
+    <span><a href="#">Privacy</a> <a href="#">Terms</a></span>
+  </div>
+</footer>
+<!-- Feedback Tab -->
+<div id="feedbackTab" onclick="toggleFeedback()"
+  style="position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:1000;
+  background:#1e3a5f;color:#fff;padding:12px 8px;
+  border-radius:8px 0 0 8px;cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:12px;
+  font-weight:600;writing-mode:vertical-rl;
+  letter-spacing:1px">FEEDBACK</div>
+<!-- Feedback Panel -->
+<div id="feedbackPanel"
+  style="position:fixed;right:-420px;top:0;width:420px;
+  height:100%;background:#fff;box-shadow:-4px 0 20px rgba(0,0,0,0.15);
+  z-index:1001;transition:right 0.3s ease;overflow:hidden">
+  <div style="display:flex;justify-content:space-between;
+    align-items:center;padding:16px 20px;background:#1e3a5f;color:#fff">
+    <span style="font-weight:600;font-size:15px;
+      font-family:'Inter',sans-serif">Send Feedback</span>
+    <span onclick="toggleFeedback()"
+      style="cursor:pointer;font-size:22px;
+      line-height:1;opacity:0.7">&times;</span>
+  </div>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSefMaVMjHk7Mv-riedh4Zw8ERQiN2BeN-lVD7AtchyNysyfeQ/viewform?embedded=true"
+    style="width:100%;height:calc(100% - 52px);border:none">
+  </iframe>
+</div>
+<!-- Overlay -->
+<div id="feedbackOverlay" onclick="toggleFeedback()"
+  style="display:none;position:fixed;top:0;left:0;
+  width:100%;height:100%;background:rgba(0,0,0,0.3);
+  z-index:999"></div>
+<script>
+function toggleFeedback() {
+  var panel = document.getElementById('feedbackPanel');
+  var overlay = document.getElementById('feedbackOverlay');
+  var tab = document.getElementById('feedbackTab');
+  var isOpen = panel.style.right === '0px';
+  panel.style.right = isOpen ? '-420px' : '0px';
+  overlay.style.display = isOpen ? 'none' : 'block';
+  tab.style.display = isOpen ? 'block' : 'none';
 }
 </script>
 </body>
